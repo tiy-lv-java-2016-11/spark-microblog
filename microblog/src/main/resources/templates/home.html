@@ -16,7 +16,9 @@
     </form>
     messages by {{user.loginName}}
     <ul>
-        <li>{{.items}}</li>
+        {{#messages}}
+            <li>{{message}}</li>
+        {{/messages}}
     </ul>
 
 </body>

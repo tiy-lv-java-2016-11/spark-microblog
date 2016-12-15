@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class Main {
     static User user;
     static Post post;
+    static ArrayList<Post> messages = new ArrayList<>();
     public static void main(String[] args) {
         Spark.init();
         Spark.get("/", ((request, response) -> {
@@ -23,11 +24,12 @@ public class Main {
             }
             else {
                 m.put("user", user);
+                m.put("messages", messages);
                 return new ModelAndView(m, "home.html");
             }
         }), new MustacheTemplateEngine());
 
-        ArrayList<Post> messages = new ArrayList<>();
+
 
         Spark.post("/home", ((request, response)->{
             String message = request.queryParams("message");
