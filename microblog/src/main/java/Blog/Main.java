@@ -18,18 +18,14 @@ public class Main {
         Spark.get("/", ((request, response) -> {
             HashMap m = new HashMap();
 
-
             if (user == null){
                 return new ModelAndView(m, "login.html");
             }
             else {
                 m.put("user", user);
-
-
                 return new ModelAndView(m, "home.html");
             }
         }), new MustacheTemplateEngine());
-
 
         ArrayList<Post> messages = new ArrayList<>();
 
@@ -41,7 +37,6 @@ public class Main {
             return "";
         }));
 
-
         Spark.post("/login", ((request, response)->{
             String name = request.queryParams("loginName");
             user = new User(name);
@@ -49,6 +44,5 @@ public class Main {
             return "";
 
         }));
-
     }
 }
